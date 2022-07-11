@@ -5,13 +5,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="curso")
+@Table(name="depoimento")
 @Builder
 @Data
 public class Depoimento {
@@ -24,7 +25,10 @@ public class Depoimento {
     private String text;
 
     @Column(name="data")
-    private Date date;
+    private LocalDate date;
 
-    // todo relacionamentos
+    @ManyToOne
+    @JoinColumn(name="egresso_id")
+    private Egresso egresso;
+
 }
