@@ -17,7 +17,7 @@ import br.ufma.backend.entity.repository.FaixaSalarialRepository;
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 @Transactional
-public class FaixaSalarialTest {
+public class FaixaSalarialRepositoryTest {
     @Autowired
     FaixaSalarialRepository repository;
 
