@@ -1,9 +1,8 @@
 package br.ufma.backend.entity.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -34,5 +33,21 @@ public class Egresso {
     @Column(name="urlFoto")
     private String urlPhoto;
 
-    // todo relacionamentos
+    // relationships
+
+    @OneToMany(mappedBy = "egresso")
+    private List<ProfissaoEgresso> profissaoEgressos;
+    
+    @ManyToMany
+    @JoinTable(
+        name = "contato_egresso", 
+        joinColumns = @JoinColumn(name = "egresso_id"), 
+        inverseJoinColumns = @JoinColumn(name = "contato_id"))
+    private List<Contato> contatos;
+
+    @OneToMany(mappedBy = "egresso")
+    List<CursoEgresso> egressoCursos;
+
+    @OneToMany(mappedBy = "egresso")
+    private List<Depoimento> depoimentos;
 }

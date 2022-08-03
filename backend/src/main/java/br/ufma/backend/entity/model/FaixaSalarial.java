@@ -1,9 +1,8 @@
 package br.ufma.backend.entity.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -22,5 +21,8 @@ public class FaixaSalarial {
     @Column(name="descricao")
     private String description;
 
-    // todo relacionamentos
+    // relationships
+
+    @OneToMany(mappedBy = "faixaSalario")
+    private List<ProfissaoEgresso> profissaoEgressos;
 }

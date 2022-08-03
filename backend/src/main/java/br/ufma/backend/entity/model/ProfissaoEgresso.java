@@ -1,9 +1,6 @@
 package br.ufma.backend.entity.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -29,5 +26,17 @@ public class ProfissaoEgresso {
     @Column(name = "data_registro")
     private Date date;
 
-    // todo relacionamentos
+    // relationships
+
+    @ManyToOne
+    @JoinColumn(name = "egresso_id")
+    private Egresso egresso;
+
+    @ManyToOne
+    @JoinColumn(name = "cargo_id")
+    private Cargo cargo;
+
+    @ManyToOne
+    @JoinColumn(name = "faixa_salario_id")
+    private FaixaSalarial faixaSalarial;
 }

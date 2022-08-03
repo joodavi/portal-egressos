@@ -1,9 +1,8 @@
 package br.ufma.backend.entity.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -25,5 +24,8 @@ public class Contato {
     @Column(name="urlLogo")
     private String urlLogo;
 
-    // todo relacionamentos
+    // relationships
+
+    @ManyToMany(mappedBy = "contatos")
+    private List<Egresso> egressos;
 }

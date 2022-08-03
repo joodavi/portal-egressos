@@ -2,6 +2,8 @@ package br.ufma.backend.entity.model;
 
 import lombok.*;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -21,4 +23,9 @@ public class Curso {
 
     @Column(name = "nivel")
     private String level;
+
+    // relationships
+
+    @OneToMany(mappedBy = "curso")
+    List<Egresso> egressos;
 }
